@@ -1,4 +1,4 @@
-// Importo todo lo de la libreria de Express
+    // Importo todo lo de la libreria de Express
 import express from "express";
 import productsRoutes from "./src/routes/products.js";
 import customersRoutes from "./src/routes/customers.js";
@@ -21,13 +21,14 @@ const app = express();
 // Que acepte cookies
 app.use(cookieParser());
 
+app.use(express.json()); // Permite leer JSON en req.body
+
 // Definir las rutas de las funciones que tendrá la página web
-app.use("/api/products", validateAuthToken(["admin"]), productsRoutes);
+app.use("/api/products", validateAuthToken(["Admin"]), productsRoutes);
 app.use("/api/customers", customersRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use("/api/branches", branchesRoutes);
 app.use("/api/reviews", reviewsRoutes);
-b;
 
 app.use("/api/registerEmployees", registerEmployeesRoutes);
 app.use("/api/login", loginRoutes);
